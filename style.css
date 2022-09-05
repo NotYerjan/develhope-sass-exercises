@@ -6,10 +6,14 @@ div {
   text-align: center;
   padding: 0.625rem;
 }
-div h1 {
+div h1, div h2 {
   max-width: fit-content;
   color: green;
   border-bottom: 0.0625rem solid blue;
+}
+div h2 {
+  padding: 1rem;
+  border: 0.0625rem solid red;
 }
 div section {
   display: flex;

@@ -15,6 +15,12 @@ div {
     border-bottom: f.rem(1) solid c.$color-three;
   }
 
+  h2 {
+    @extend h1;
+    padding: f.rem(16);
+    border: f.rem(1) solid c.$color-one;
+  }
+
   @mixin article-box(
     $text-color: c.$color-three,
     $border-color: c.$color-two,
