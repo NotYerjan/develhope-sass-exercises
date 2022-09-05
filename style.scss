@@ -1,0 +1,48 @@
+@use "colors.scss" as c;
+@use "functions.scss" as f;
+
+div {
+  border: f.rem(1) solid c.$color-one;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: f.rem(10);
+
+  h1 {
+    max-width: fit-content;
+    color: c.$color-two;
+    border-bottom: f.rem(1) solid c.$color-three;
+  }
+
+  @mixin article-box(
+    $text-color: c.$color-three,
+    $border-color: c.$color-two,
+    $font-size: f.rem(16)
+  ) {
+    flex: 1;
+    padding: f.rem(20) f.rem(10);
+    border: f.rem(1) solid $border-color;
+    color: $text-color;
+    font-size: $font-size;
+  }
+  section {
+    display: flex;
+
+    article {
+      @include article-box;
+
+      &:nth-of-type(even) {
+        @include article-box(c.$color-one);
+      }
+    }
+
+    &:nth-of-type(2) {
+      margin-top: f.rem(10);
+
+      article {
+        @include article-box(c.$color-two, c.$color-three, f.rem(24));
+      }
+    }
+  }
+}
