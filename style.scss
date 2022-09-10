@@ -1,5 +1,6 @@
 @use "colors.scss" as c;
 @use "functions.scss" as f;
+@use "sass:color";
 
 div {
   border: f.rem(1) solid c.$color-one;
@@ -48,6 +49,45 @@ div {
 
       article {
         @include article-box(c.$color-two, c.$color-three, f.rem(24));
+      }
+    }
+  }
+}
+
+$sizes: 1rem, 2rem, 3rem;
+
+.numbers {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  margin: 10px;
+
+  @each $size in $sizes {
+    .fs-#{$size} {
+      font-size: $size;
+    }
+  }
+
+  div {
+    border: 1px solid c.$color-one;
+    width: 45px;
+    height: 45px;
+    padding: 0;
+    align-items: flex-start;
+
+    @for $i from 1 through 19 {
+      &:nth-of-type(#{$i}) {
+        @if $i == 10 {
+          color: c.$color-one;
+          background-color: c.$color-three;
+        } @else {
+          color: color.adjust(c.$black, $lightness: calc($i * (5%)));
+          background-color: color.adjust(
+            c.$white,
+            $lightness: calc($i * (-5%))
+          );
+        }
       }
     }
   }
